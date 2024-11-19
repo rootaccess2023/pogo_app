@@ -1,4 +1,4 @@
-import { FullscreenControl, Map } from "react-map-gl";
+import { Map, Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 export function MapBox() {
@@ -16,7 +16,11 @@ export function MapBox() {
         style={{ width: "100%", height: "calc(100vh - 50px)" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
-        <FullscreenControl />
+        <Marker
+          longitude={121.7744}
+          latitude={12.8797}
+          anchor="bottom"
+        ></Marker>
       </Map>
     </div>
   );
