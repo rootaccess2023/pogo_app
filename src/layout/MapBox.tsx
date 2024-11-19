@@ -13,7 +13,7 @@ export function MapBox() {
           latitude: 12.8797,
           zoom: 5,
         }}
-        style={{ width: "100%", height: "calc(100vh - 50px)" }}
+        style={{ width: "100%", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
         <Marker
