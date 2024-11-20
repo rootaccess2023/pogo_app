@@ -8,6 +8,9 @@ export function PogoList() {
   const year = useYearStore((state) => state.year);
   const pogo = usePogoStore((state) => state.pogo);
   const setPogo = usePogoStore((state) => state.setPogo);
+  const setSelectedLocation = usePogoStore(
+    (state) => state.setSelectedLocation
+  );
 
   useEffect(() => {
     const data = mockPOGOLocations.filter(
@@ -21,6 +24,12 @@ export function PogoList() {
         <li
           className="h-[60px] flex justify-between items-center hover:bg-gray-100 pl-8 pr-4 cursor-pointer"
           key={index}
+          onClick={() =>
+            setSelectedLocation({
+              latitude: pogo.latitude,
+              longitude: pogo.longitude,
+            })
+          }
         >
           <span className="flex items-center gap-1">
             <PiPokerChipLight className="size-6 text-[#007ce1]" />
