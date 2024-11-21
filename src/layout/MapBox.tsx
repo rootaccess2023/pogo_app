@@ -1,4 +1,4 @@
-import { Map, MapRef, Marker } from "react-map-gl";
+import { Map, MapRef } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useRef } from "react";
 import { usePogoStore } from "../stores";
