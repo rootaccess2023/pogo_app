@@ -10,8 +10,7 @@ export function PogoList() {
   const setSelectedLocation = usePogoStore(
     (state) => state.setSelectedLocation
   );
-  const toggleDetails = usePogoStore((state) => state.toggleDetails);
-  const setToggleDetails = usePogoStore((state) => state.setToggleDetails);
+  const setToggleTrue = usePogoStore((state) => state.setToggleTrue);
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -49,7 +48,7 @@ export function PogoList() {
               description: pogo.description,
               image: pogo.image,
             });
-            setToggleDetails(toggleDetails);
+            setToggleTrue();
           }}
         >
           <span className="flex items-center gap-1">
