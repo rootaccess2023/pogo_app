@@ -41,7 +41,7 @@ export function MapBox() {
           pitch: 0,
         }}
         style={{ width: "100%", height: "100vh" }}
-        mapStyle="mapbox://styles/polorevilo19/cm3qjk2py002y01s600axgub5"
+        mapStyle="mapbox://styles/polorevilo19/cm3qjcahc003s01r23ylb492w"
         minZoom={5}
       >
         {pogo.map((pogo) => (
