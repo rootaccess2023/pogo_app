@@ -1,4 +1,4 @@
-import { Details, MapBox, Sidebar, View } from "./layout";
+import { MapBox, Sidebar, View } from "./layout";
 
 export function AppContainer() {
   return (
