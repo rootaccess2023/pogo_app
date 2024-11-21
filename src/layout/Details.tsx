@@ -6,15 +6,15 @@ import {
 import { usePogoStore } from "../stores";
 export function Details() {
   const toggleDetails = usePogoStore((state) => state.toggleDetails);
-  const setToggleDetails = usePogoStore((state) => state.setToggleDetails);
+  const setToggleFalse = usePogoStore((state) => state.setToggleFalse);
   const selectedLocation = usePogoStore((state) => state.selectedLocation);
   return (
     <>
       {toggleDetails && (
         <div className="absolute top-[4.5rem] left-[1.5rem] w-[20rem] h-fit flex flex-col gap-2 bg-white bg-opacity-80  p-4 rounded-lg">
           <IoClose
-            onClick={() => setToggleDetails(toggleDetails)}
-            className="z-10 absolute right-4 text-gray-500 w-fit cursor-pointer"
+            onClick={() => setToggleFalse()}
+            className="z-10 absolute top-5 bg-white hover:bg-gray-200 size-4 rounded right-5 text-gray-500 w-fit cursor-pointer"
           />
           <img className="rounded-md" src={selectedLocation?.image} />
           <h1 className="text-xl font-bold">{selectedLocation?.name}</h1>
