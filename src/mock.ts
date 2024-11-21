@@ -7,6 +7,8 @@ interface POLOLocation {
   longitude: number;
   confirmed: boolean;
   years: YearStatus;
+  description: string;
+  image: string;
 }
 
 const mockPOGOLocations: POLOLocation[] = [
@@ -26,6 +28,9 @@ const mockPOGOLocations: POLOLocation[] = [
       "2023": true,
       "2024": false,
     },
+    description:
+      "POGO Location A is a vibrant hub known for its active community and scenic surroundings.",
+    image: "https://placehold.co/600x400",
   },
   {
     id: 2,
@@ -43,6 +48,9 @@ const mockPOGOLocations: POLOLocation[] = [
       "2023": false,
       "2024": false,
     },
+    description:
+      "POGO Location B offers a tranquil environment, perfect for visitors seeking a peaceful getaway.",
+    image: "https://placehold.co/600x400",
   },
   {
     id: 3,
@@ -60,6 +68,9 @@ const mockPOGOLocations: POLOLocation[] = [
       "2023": true,
       "2024": true,
     },
+    description:
+      "POGO Location C is a bustling area known for its rich history and modern amenities.",
+    image: "https://placehold.co/600x400",
   },
 ];
 

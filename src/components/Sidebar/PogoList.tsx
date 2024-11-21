@@ -11,6 +11,7 @@ export function PogoList() {
   const setSelectedLocation = usePogoStore(
     (state) => state.setSelectedLocation
   );
+  const setToggleDetails = usePogoStore((state) => state.setToggleDetails);
 
   useEffect(() => {
     const data = mockPOGOLocations.filter(
@@ -24,12 +25,16 @@ export function PogoList() {
         <li
           className="h-[60px] flex justify-between items-center hover:bg-gray-100 pl-8 pr-4 cursor-pointer"
           key={index}
-          onClick={() =>
+          onClick={() => {
             setSelectedLocation({
+              name: pogo.name,
               latitude: pogo.latitude,
               longitude: pogo.longitude,
-            })
-          }
+              description: pogo.description,
+              image: pogo.image,
+            }),
+              setToggleDetails();
+          }}
         >
           <span className="flex items-center gap-1">
             <PiPokerChipLight className="size-6 text-[#007ce1]" />

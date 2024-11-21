@@ -1,10 +1,11 @@
-import { Map, MapRef, Marker } from "react-map-gl";
+import { Map, MapRef } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useRef } from "react";
 import { usePogoStore } from "../stores";
+import { Details } from "./Details";
+import { MarkerList } from "../components";
 
 export function MapBox() {
-  const pogo = usePogoStore((state) => state.pogo);
   const selectedLocation = usePogoStore((state) => state.selectedLocation);
   const MAPBOX_TOKEN =
     "pk.eyJ1IjoicG9sb3JldmlsbzE5IiwiYSI6ImNtM2xydzVyZTByZ2Qyc3BlZ2gwaGcwZnEifQ.pQZoqD9Md_xq2JAlYZzoLw";
@@ -30,7 +31,7 @@ export function MapBox() {
   }, [selectedLocation]);
 
   return (
-    <div>
+    <div className="relative w-full h-screen">
       <Map
         ref={mapRef}
         mapboxAccessToken={MAPBOX_TOKEN}
@@ -40,18 +41,13 @@ export function MapBox() {
           zoom: 5,
           pitch: 0,
         }}
-        style={{ width: "100%", height: "100vh" }}
+        style={{ width: "100%", height: "100%" }}
         mapStyle="mapbox://styles/polorevilo19/cm3qjcahc003s01r23ylb492w"
         minZoom={5}
       >
-        {pogo.map((pogo) => (
-          <Marker
-            key={pogo.id}
-            longitude={pogo.longitude}
-            latitude={pogo.latitude}
-          />
-        ))}
+        <MarkerList />
       </Map>
+      <Details />
     </div>
   );
 }
