@@ -18,7 +18,8 @@ interface PogoState {
     image: string;
   }) => void;
   toggleDetails: boolean;
-  setToggleDetails: () => void;
+  setToggleTrue: () => void;
+  setToggleFalse: () => void;
 }
 
 export const usePogoStore = create<PogoState>((set) => ({
@@ -27,5 +28,6 @@ export const usePogoStore = create<PogoState>((set) => ({
   setPogo: (data: any[]) => set({ pogo: data }),
   setSelectedLocation: (location) => set({ selectedLocation: location }),
   toggleDetails: false,
-  setToggleDetails: () => set({ toggleDetails: true }),
+  setToggleTrue: () => set({ toggleDetails: true }),
+  setToggleFalse: () => set({ toggleDetails: false }),
 }));
