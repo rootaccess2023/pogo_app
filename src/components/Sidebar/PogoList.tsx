@@ -35,7 +35,7 @@ export function PogoList() {
   console.log(pogo);
 
   return (
-    <ul>
+    <ul className="h-[calc(100vh_-_203px)] overflow-scroll">
       {pogo.map((pogo, index) => (
         <li
           className="h-[60px] flex justify-between items-center hover:bg-gray-100 pl-8 pr-4 cursor-pointer"
