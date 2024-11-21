@@ -51,9 +51,9 @@ export function PogoList() {
             setToggleTrue();
           }}
         >
-          <span className="flex items-center gap-1">
+          <span className="flex gap-1">
             <PiPokerChipLight className="size-6 text-[#007ce1]" />
-            <h1>{pogo.name}</h1>
+            <h1 className="max-w-48 truncate">{pogo.name}</h1>
           </span>
           <IoIosArrowForward className="size-6 text-[#cccccc]" />
         </li>
