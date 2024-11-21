@@ -1,8 +1,4 @@
-import {
-  IoAlertCircleOutline,
-  IoClose,
-  IoLocationOutline,
-} from "react-icons/io5";
+import { IoAlertCircleOutline, IoLocationOutline } from "react-icons/io5";
 import { usePogoStore } from "../stores";
 export function Details() {
   const toggleDetails = usePogoStore((state) => state.toggleDetails);
