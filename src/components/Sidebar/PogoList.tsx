@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import mockPOGOLocations from "../../mock";
 import { usePogoStore, useYearStore } from "../../stores";
 import { PiPokerChipLight } from "react-icons/pi";
 import { IoIosArrowForward } from "react-icons/io";
@@ -11,14 +10,31 @@ export function PogoList() {
   const setSelectedLocation = usePogoStore(
     (state) => state.setSelectedLocation
   );
+  const toggleDetails = usePogoStore((state) => state.toggleDetails);
   const setToggleDetails = usePogoStore((state) => state.setToggleDetails);
 
   useEffect(() => {
-    const data = mockPOGOLocations.filter(
-      (pogo) => pogo.years[year.toString()]
-    );
-    setPogo(data);
-  }, [year]);
+    const fetchLocations = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/locations?year=${year}`
+        );
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        const data = await response.json();
+        setPogo(data);
+      } catch (error) {
+        console.error("Failed to fetch locations:", error);
+        setPogo([]);
+      }
+    };
+
+    fetchLocations();
+  }, [year, setPogo]);
+
+  console.log(pogo);
+
   return (
     <ul>
       {pogo.map((pogo, index) => (
@@ -32,8 +48,8 @@ export function PogoList() {
               longitude: pogo.longitude,
               description: pogo.description,
               image: pogo.image,
-            }),
-              setToggleDetails();
+            });
+            setToggleDetails(toggleDetails);
           }}
         >
           <span className="flex items-center gap-1">
