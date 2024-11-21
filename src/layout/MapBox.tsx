@@ -19,11 +19,11 @@ export function MapBox() {
 
   useEffect(() => {
     if (selectedLocation && mapRef.current) {
-      console.log("Flying to:", selectedLocation);
       const map = mapRef.current.getMap();
       map.flyTo({
         center: [selectedLocation.longitude, selectedLocation.latitude],
-        zoom: 20,
+        zoom: 18,
+        pitch: 60,
         speed: 1.2,
       });
     }
@@ -38,10 +38,10 @@ export function MapBox() {
           longitude: 121.7744,
           latitude: 12.8797,
           zoom: 5,
-          pitch: 60,
+          pitch: 0,
         }}
         style={{ width: "100%", height: "100vh" }}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle="mapbox://styles/polorevilo19/cm3qjk2py002y01s600axgub5"
         minZoom={5}
       >
         {pogo.map((pogo) => (
