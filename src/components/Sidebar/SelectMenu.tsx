@@ -1,10 +1,24 @@
-import { useYearStore } from "../../stores";
+import { usePogoStore, useYearStore } from "../../stores";
+import { useViewStore } from "../../stores/viewStore";
 
 export function SelectMenu() {
   const year = useYearStore((state) => state.year);
   const setYear = useYearStore((state) => state.setYear);
+  const setSelectedLocation = usePogoStore(
+    (state) => state.setSelectedLocation
+  );
+  const setZoom = useViewStore((state) => state.setZoom);
+  const setPitch = useViewStore((state) => state.setPitch);
+  const setToggleFalse = usePogoStore((state) => state.setToggleFalse);
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setYear(parseInt(e.target.value));
+    setSelectedLocation({
+      latitude: 12.8797,
+      longitude: 121.7744,
+    });
+    setZoom(5);
+    setPitch(0);
+    setToggleFalse();
   };
 
   return (
