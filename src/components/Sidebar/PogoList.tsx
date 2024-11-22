@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { usePogoStore, useYearStore } from "../../stores";
 import { PiPokerChipLight } from "react-icons/pi";
 import { IoIosArrowForward } from "react-icons/io";
+import { useViewStore } from "../../stores/viewStore";
 
 export function PogoList() {
   const year = useYearStore((state) => state.year);
@@ -11,6 +12,8 @@ export function PogoList() {
     (state) => state.setSelectedLocation
   );
   const setToggleTrue = usePogoStore((state) => state.setToggleTrue);
+  const setPitch = useViewStore((state) => state.setPitch);
+  const setZoom = useViewStore((state) => state.setZoom);
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -51,6 +54,8 @@ export function PogoList() {
               years: pogo.years,
             });
             setToggleTrue();
+            setPitch(60);
+            setZoom(18);
           }}
         >
           <span className="flex gap-1">
