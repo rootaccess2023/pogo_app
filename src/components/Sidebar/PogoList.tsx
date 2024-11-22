@@ -47,6 +47,8 @@ export function PogoList() {
               longitude: pogo.longitude,
               description: pogo.description,
               image: pogo.image,
+              address: pogo.address,
+              years: pogo.years,
             });
             setToggleTrue();
           }}
