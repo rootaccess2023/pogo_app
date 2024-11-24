@@ -19,7 +19,7 @@ export function PogoList() {
     const fetchLocations = async () => {
       try {
         const response = await fetch(
-          `https://pogoph-api.onrender.com/locations?year=${year}`
+          `http://localhost:3000/locations?year=${year}`
         );
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
@@ -33,7 +33,7 @@ export function PogoList() {
     };
 
     fetchLocations();
-  }, [year, setPogo]);
+  }, [year]);
 
   console.log(pogo);
 
