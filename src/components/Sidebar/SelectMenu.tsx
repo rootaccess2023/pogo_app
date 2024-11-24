@@ -26,7 +26,7 @@ export function SelectMenu() {
       <select
         value={year}
         onChange={handleSelectChange}
-        className="w-60 px-4 py-2 my-3 bg-white rounded drop-shadow"
+        className="w-60 px-4 py-2 my-3 bg-white rounded font-bold drop-shadow"
       >
         <option value="2017">2017</option>
         <option value="2018">2018</option>
