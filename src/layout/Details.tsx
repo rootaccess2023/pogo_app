@@ -17,12 +17,15 @@ export function Details() {
   return (
     <>
       {toggleDetails && (
-        <div className="absolute top-[4.5rem] left-[1.5rem] w-[20rem] h-fit flex flex-col bg-white bg-opacity-80 p-4 rounded-lg">
+        <div className="absolute w-[calc(100%_-_3rem)] h-[18.75rem] sm:h-fit overflow-scroll bottom-[1.5rem] sm:top-[4.5rem] left-[1.5rem] sm:w-[20rem] lg:flex flex-col bg-white bg-opacity-80 p-4 rounded-lg">
           <IoClose
             onClick={() => setToggleFalse()}
             className="z-10 absolute top-5 bg-white hover:bg-gray-200 size-4 rounded right-5 text-gray-500 w-fit cursor-pointer"
           />
-          <img className="rounded-md h-60" src={selectedLocation?.image} />
+          <img
+            className="rounded-md h-60 w-full sm:w-fit"
+            src={selectedLocation?.image}
+          />
           <h1 className="text-xl font-semibold py-2">
             {selectedLocation?.name}
           </h1>

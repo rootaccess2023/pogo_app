@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { usePogoStore, useYearStore } from "../../stores";
+import { useMenuStore, usePogoStore, useYearStore } from "../../stores";
 import { PiPokerChipLight } from "react-icons/pi";
 import { IoIosArrowForward } from "react-icons/io";
 import { useViewStore } from "../../stores/viewStore";
@@ -19,6 +19,8 @@ export function PogoList() {
   const setScrollPosition = useViewStore((state) => state.setScrollPosition);
   const setItemRefs = useViewStore((state) => state.setItemRefs);
   const itemRef = useViewStore((state) => state.itemRefs);
+  const menu = useMenuStore((state) => state.menu);
+  const toggleMenu = useMenuStore((state) => state.toggleMenu);
 
   const itemRefs = useRef<(HTMLLIElement | null)[]>(itemRef);
 
@@ -59,6 +61,7 @@ export function PogoList() {
     setToggleTrue();
     setPitch(60);
     setZoom(18);
+    toggleMenu(menu);
 
     const scrollPos = itemRefs.current[index]?.offsetTop || 0;
     setScrollPosition(scrollPos);
@@ -79,7 +82,7 @@ export function PogoList() {
   }, [scrollPosition]);
 
   return (
-    <ul className="h-[calc(100vh_-_203px)] overflow-scroll">
+    <ul className="h-[calc(100vh_-_243px)] lg:h-[calc(100vh_-_203px)] overflow-scroll">
       {pogo.map((pogo, index) => (
         <li
           className={`h-[60px] flex justify-between items-center pl-8 pr-4 cursor-pointer ${

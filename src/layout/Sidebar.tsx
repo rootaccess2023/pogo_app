@@ -1,9 +1,15 @@
 import { Header, PogoList, SelectMenu, Subtitle, Title } from "../components";
+import { useMenuStore } from "../stores";
 
 export function Sidebar() {
+  const menu = useMenuStore((state) => state.menu);
   return (
-    <div className="w-96">
-      <div className="pt-6 px-6">
+    <div
+      className={`z-50 absolute shadow lg:relative lg:z-0 ${
+        menu === true ? "block bg-white" : "hidden"
+      } lg:block w-96`}
+    >
+      <div className="pt-16 lg:pt-6 px-6">
         <Header />
         <Title />
         <SelectMenu />

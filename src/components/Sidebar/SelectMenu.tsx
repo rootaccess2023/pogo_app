@@ -1,4 +1,4 @@
-import { usePogoStore, useYearStore } from "../../stores";
+import { useMenuStore, usePogoStore, useYearStore } from "../../stores";
 import { useViewStore } from "../../stores/viewStore";
 
 export function SelectMenu() {
@@ -10,6 +10,8 @@ export function SelectMenu() {
   const setZoom = useViewStore((state) => state.setZoom);
   const setPitch = useViewStore((state) => state.setPitch);
   const setToggleFalse = usePogoStore((state) => state.setToggleFalse);
+  const menu = useMenuStore((state) => state.menu);
+  const toggleMenu = useMenuStore((state) => state.toggleMenu);
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setYear(parseInt(e.target.value));
     setSelectedLocation({
@@ -19,6 +21,7 @@ export function SelectMenu() {
     setZoom(5);
     setPitch(0);
     setToggleFalse();
+    toggleMenu(menu);
   };
 
   return (
