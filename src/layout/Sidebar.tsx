@@ -7,7 +7,7 @@ export function Sidebar() {
     <div
       className={`z-50 absolute shadow lg:relative lg:z-0 ${
         menu === true ? "block bg-white" : "hidden"
-      } lg:block w-96`}
+      } lg:block w-full sm:w-96`}
     >
       <div className="pt-16 lg:pt-6 px-6">
         <Header />

@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useMenuStore, usePogoStore, useYearStore } from "../../stores";
-import { PiPokerChipLight } from "react-icons/pi";
 import { IoIosArrowForward } from "react-icons/io";
 import { useViewStore } from "../../stores/viewStore";
 
@@ -82,27 +81,46 @@ export function PogoList() {
   }, [scrollPosition]);
 
   return (
-    <ul className="h-[calc(100vh_-_243px)] lg:h-[calc(100vh_-_203px)] overflow-scroll">
+    <ul className="h-[calc(100vh_-_223px)] lg:h-[calc(100vh_-_203px)] overflow-scroll">
       {pogo.map((pogo, index) => (
         <li
-          className={`h-[60px] flex justify-between items-center pl-8 pr-4 cursor-pointer ${
+          className={`h-[60px] flex justify-between items-center cursor-pointer ${
             pogo.latitude === selectedLocation?.latitude &&
-            pogo.longitude === selectedLocation?.longitude
-              ? "font-semibold bg-gray-100"
+            pogo.longitude === selectedLocation?.longitude &&
+            pogo.name === selectedLocation?.name
+              ? "font-semibold bg-red-100"
               : ""
-          } hover:bg-gray-100`}
+          } group hover:bg-red-100`}
           key={index}
           ref={(el) => (itemRefs.current[index] = el)}
           onClick={() => handleClick(index, pogo)}
         >
-          <span className="flex gap-1">
-            <PiPokerChipLight className="size-6 text-[#007ce1]" />
-            <h1 className="max-w-48 truncate">{pogo.name}</h1>
-          </span>
-          <IoIosArrowForward className="size-6 text-[#cccccc]" />
+          <div
+            className={`w-[4px] h-[60px] ${
+              pogo.latitude === selectedLocation?.latitude &&
+              pogo.longitude === selectedLocation?.longitude &&
+              pogo.name === selectedLocation?.name
+                ? "bg-[#dc1b23]"
+                : "group-hover:bg-[#dc1b23]"
+            }`}
+          ></div>
+
+          <div className="w-full flex justify-between pl-8 pr-4">
+            <span className="flex flex-col">
+              <h1 className="max-w-60 truncate">{pogo.name}</h1>
+              <p className="text-sm font-light text-zinc-500">{pogo.region}</p>
+            </span>
+            <IoIosArrowForward className="size-6 text-[#cccccc]" />
+          </div>
         </li>
       ))}
-      {pogo.length === 0 && <li>No data found for the selected year.</li>}
+      {year === 2019 ? (
+        <li className="px-6">
+          No data found for the selected year due to Covid-19.
+        </li>
+      ) : year === 2024 ? (
+        <li className="px-6">All pogo closed.</li>
+      ) : null}
     </ul>
   );
 }

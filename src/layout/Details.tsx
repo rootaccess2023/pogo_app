@@ -23,7 +23,7 @@ export function Details() {
             className="z-10 absolute top-5 bg-white hover:bg-gray-200 size-4 rounded right-5 text-gray-500 w-fit cursor-pointer"
           />
           <img
-            className="rounded-md h-60 w-full sm:w-fit"
+            className="rounded-md h-60 w-full"
             src={selectedLocation?.image}
           />
           <h1 className="text-xl font-semibold py-2">

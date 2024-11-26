@@ -9,6 +9,7 @@ interface PogoState {
     description?: string;
     image?: string;
     address?: string;
+    region?: string;
     years?: { [key: string]: boolean };
   } | null;
   setPogo: (pogo: any[]) => void;
@@ -19,6 +20,7 @@ interface PogoState {
     description?: string;
     image?: string;
     address?: string;
+    region?: string;
     years?: { [key: string]: boolean };
   }) => void;
   toggleDetails: boolean;
