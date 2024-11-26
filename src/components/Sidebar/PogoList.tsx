@@ -56,6 +56,7 @@ export function PogoList() {
       image: pogo.image,
       address: pogo.address,
       years: pogo.years,
+      region: pogo.region,
     });
     setToggleTrue();
     setPitch(60);
