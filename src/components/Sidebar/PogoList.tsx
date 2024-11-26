@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useMenuStore, usePogoStore, useYearStore } from "../../stores";
 import { IoIosArrowForward } from "react-icons/io";
 import { useViewStore } from "../../stores/viewStore";
+import { Loader } from "./Loader";
 
 export function PogoList() {
   const year = useYearStore((state) => state.year);
@@ -31,7 +32,7 @@ export function PogoList() {
     const fetchLocations = async () => {
       try {
         const response = await fetch(
-          `https://pogoph-api.onrender.com/locations?year=${year}`
+          `http://localhost:3000/locations?year=${year}`
         );
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
@@ -115,12 +116,13 @@ export function PogoList() {
           </div>
         </li>
       ))}
+      {pogo.length === 0 && <Loader />}
       {year === 2019 ? (
         <li className="px-6">
           No data found for the selected year due to Covid-19.
         </li>
       ) : year === 2024 ? (
-        <li className="px-6">All pogo closed.</li>
+        <li className="px-6">PBBM declared closure of POGO.</li>
       ) : null}
     </ul>
   );
